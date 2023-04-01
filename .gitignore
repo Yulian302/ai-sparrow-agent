@@ -1,0 +1,14 @@
+/Library
+/ProjectSettings
+/Temp
+/obj
+/Build
+*.csproj
+*.sln
+*.userprefs
+*.pidb
+*.booproj
+*.unityproj
+*.apk
+*.unitypackage
+/venv

@@ -1,0 +1,29 @@
+{
+    "Move": {
+        "checkpoints": [
+            {
+                "steps": 2510,
+                "file_path": "results\\ppo\\Move\\Move-2510.onnx",
+                "reward": -0.10000000149011612,
+                "creation_time": 1680369783.0869257,
+                "auxillary_file_paths": [
+                    "results\\ppo\\Move\\Move-2510.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 2510,
+            "file_path": "results\\ppo\\Move.onnx",
+            "reward": -0.10000000149011612,
+            "creation_time": 1680369783.0869257,
+            "auxillary_file_paths": [
+                "results\\ppo\\Move\\Move-2510.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.8.0+cu111"
+    }
+}
