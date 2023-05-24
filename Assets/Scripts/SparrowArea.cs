@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using TMPro;
 
@@ -12,6 +13,7 @@ public class SparrowArea : MonoBehaviour
     [HideInInspector] public float spiderSpeed;
     [HideInInspector] public float feedRadius = 1f;
     private List<GameObject> m_SpiderList;
+    private List<GameObject> m_SphereList;
 
     public void ResetArea()
     {
@@ -34,20 +36,16 @@ public class SparrowArea : MonoBehaviour
     {
         if (m_SpiderList != null)
         {
-            foreach (var t in m_SpiderList)
+            foreach (var t in m_SpiderList.Where(t => t != null))
             {
-                if (t != null)
-                {
-                    Destroy(t);
-                }
+                Destroy(t);
             }
         }
         m_SpiderList = new List<GameObject>();
     }
-
     private void PlaceSparrow()
     {
-        Rigidbody rigidBody = sparrowAgent.GetComponent<Rigidbody>();
+        var rigidBody = sparrowAgent.GetComponent<Rigidbody>();
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = Vector3.zero;
         sparrowAgent.transform.position = m_Spawner.GETRandomPosition();
@@ -59,7 +57,7 @@ public class SparrowArea : MonoBehaviour
         Rigidbody rigidBody = sparrowBaby.GetComponent<Rigidbody>();
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = Vector3.zero;
-        sparrowBaby.transform.position = m_Spawner.GETRandomPosition();
+        //sparrowBaby.transform.position = m_Spawner.GETRandomPosition();
         sparrowBaby.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
     }
 
@@ -75,6 +73,7 @@ public class SparrowArea : MonoBehaviour
             spiderObject.GetComponent<Spider>().spiderSpeed = speed;
         }
     }
+
 
     public void Start()
     {

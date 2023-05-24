@@ -125,7 +125,27 @@ public class SparrowAgent : Agent
         sensor.AddObservation(Vector3.Distance(babyPosition, agentPosition));
         sensor.AddObservation((babyPosition - agentPosition).normalized);
         sensor.AddObservation(transform.forward);
-        //8 observations
+
+        GameObject[] spiders = GameObject.FindGameObjectsWithTag("spider");
+        if (spiders.Length > 0)
+        {
+            float nearestSpiderDistance = Mathf.Infinity;
+            foreach (var spider in spiders)
+            {
+                float distanceToSpider = Vector3.Distance(transform.position, spider.transform.position);
+                if (distanceToSpider < nearestSpiderDistance)
+                {
+                    nearestSpiderDistance = distanceToSpider;
+                }
+            }
+            sensor.AddObservation(nearestSpiderDistance);
+        }
+        else
+        {
+            sensor.AddObservation(-1f);
+        }
+        //9 observations
+
     }
 
     private void OnCollisionEnter(Collision other)
@@ -133,8 +153,8 @@ public class SparrowAgent : Agent
         if (other.transform.CompareTag("spider"))
         {
             EatSpider(other.gameObject);
+            Debug.Log("Spider eaten!");
         }
-
         if (other.transform.CompareTag("baby"))
         {
             RegurgitateSpider();

@@ -4,19 +4,17 @@
     <list default="true" id="63150a19-8dd3-4ccd-9fba-dfd41f478a2f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AISpaceship/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AISpaceship/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ML-Agents/Timers/aispace_timers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ML-Agents/Timers/aispace_timers.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraFollowPlayer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/CameraFollowPlayer.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Move.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Move.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/camera/Main Camera.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/camera/Main Camera.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/workspaces/aispace.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/workspaces/aispace.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SparrowAgent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SparrowAgent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/SparrowArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/SparrowArea.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sphere.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sphere.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0-prev.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker0.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker1-prev.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/AssetImportWorker1.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-AssetImportWorker0.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Logs/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/CurrentMaximizeLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2021.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +87,11 @@
       <workItem from="1683557978377" duration="13953000" />
       <workItem from="1683619375228" duration="8736000" />
       <workItem from="1683636893730" duration="12870000" />
-      <workItem from="1683703828896" duration="5052000" />
+      <workItem from="1683703828896" duration="8318000" />
+      <workItem from="1684245601276" duration="8614000" />
+      <workItem from="1684743861608" duration="5546000" />
+      <workItem from="1684833986024" duration="6162000" />
+      <workItem from="1684913117594" duration="2537000" />
     </task>
     <task id="LOCAL-00001" summary="bug fixes">
       <created>1683041678256</created>
@@ -119,7 +121,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683112275810</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="bug fixes">
+      <created>1683710675894</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1683710675894</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,10 +152,10 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="bug fixes" />
     <MESSAGE value="unity scenes" />
     <MESSAGE value="changed project" />
     <MESSAGE value="ch" />
-    <option name="LAST_COMMIT_MESSAGE" value="ch" />
+    <MESSAGE value="bug fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fixes" />
   </component>
 </project>
