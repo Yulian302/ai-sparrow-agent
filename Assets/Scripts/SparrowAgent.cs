@@ -18,6 +18,7 @@ public class SparrowAgent : Agent
     private GameObject m_Baby;
     private bool m_IsFullStomach;
     private Animator m_Animation;
+    public RayPerceptionSensor Sensor;
 
     public override void Initialize()
     {
@@ -122,46 +123,52 @@ public class SparrowAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        // is agent hungry
+        // is agent hungry (1 observation)
         sensor.AddObservation(m_IsFullStomach);
-        //1
-        // distance to baby (scalar)
+
+        // distance to baby (scalar) (1 observation)
         var babyPosition = m_Baby.transform.position;
         var agentPosition = transform.position;
         sensor.AddObservation(Vector3.Distance(babyPosition, agentPosition));
-        //3
-        // baby position
+
+        // baby position (3 observations)
         sensor.AddObservation(babyPosition);
-        //3
-        // direction to baby 
+
+        // direction to baby (3 observations)
         sensor.AddObservation(babyPosition - agentPosition);
-        //3
-        // vector3 of space in front of agent
+
+        // agent forward direction (3 observations)
         sensor.AddObservation(transform.forward);
-        //3
-        // distance to closest spider
+
+        // distance to closest spider (1 observation)
         var spiders = GameObject.FindGameObjectsWithTag("spider");
         if (spiders.Length > 0)
         {
             float nearestSpiderDistance = Mathf.Infinity;
+            Vector3 nearestSpiderDirection = Vector3.zero;
+
             foreach (var spider in spiders)
             {
                 float distanceToSpider = Vector3.Distance(agentPosition, spider.transform.position);
                 if (distanceToSpider < nearestSpiderDistance)
                 {
                     nearestSpiderDistance = distanceToSpider;
+                    nearestSpiderDirection = spider.transform.position - agentPosition;
                 }
             }
 
-            sensor.AddObservation(nearestSpiderDistance);
+            sensor.AddObservation(nearestSpiderDistance); // 1 observation
+            sensor.AddObservation(nearestSpiderDirection.normalized); // 3 observations
         }
         else
         {
-            sensor.AddObservation(-1f);
+            sensor.AddObservation(-1f); // 1 observation
+            sensor.AddObservation(Vector3.zero); // 3 observations
         }
-        //1
-        //9+3+3 observations
+        
+        //15
     }
+
 
     private void OnCollisionEnter(Collision other)
     {
