@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1683125911",
+        "python_version": "3.9.6 (tags/v3.9.6:db3ff76, Jun 28 2021, 15:26:21) [MSC v.1929 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\Asus\\AppData\\Local\\Programs\\Python\\Python39\\Scripts\\mlagents-learn D:\\mlagents\\ml-agents\\config\\ppo\\Sparrow.yaml --run-id Sparrow_1 --force",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "2.0.0+cpu",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1683125933"
+    },
+    "total": 21.3604352,
+    "count": 1,
+    "self": 0.005417200000000122,
+    "children": {
+        "run_training.setup": {
+            "total": 0.1704637,
+            "count": 1,
+            "self": 0.1704637
+        },
+        "TrainerController.start_learning": {
+            "total": 21.184554300000002,
+            "count": 1,
+            "self": 0.00028679999999781103,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 21.1842557,
+                    "count": 1,
+                    "self": 21.1842557
+                },
+                "trainer_threads": {
+                    "total": 8.000000022434506e-07,
+                    "count": 1,
+                    "self": 8.000000022434506e-07
+                },
+                "TrainerController._save_models": {
+                    "total": 1.100000000064938e-05,
+                    "count": 1,
+                    "self": 1.100000000064938e-05
+                }
+            }
+        }
+    }
+}
