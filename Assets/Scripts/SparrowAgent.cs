@@ -33,16 +33,19 @@ public class SparrowAgent : Agent
         float forwardAmount = actions.DiscreteActions[0];
         float turnAmount = 0f;
         var maxHeight = 30f;
-        if (Math.Abs(actions.DiscreteActions[1] - 1f) < tolerance)
+        var turning = actions.DiscreteActions[1];
+        var flying = actions.DiscreteActions[2];
+        switch (turning)
         {
-            turnAmount = -1f;
-        }
-        else if (Math.Abs(actions.DiscreteActions[1] - 2f) < tolerance)
-        {
-            turnAmount = 1f;
+            case 1:
+                turnAmount = -1f;
+                break;
+            case 2:
+                turnAmount = 1f;
+                break;
         }
 
-        if (Math.Abs(actions.DiscreteActions[2] - 1f) < tolerance)
+        if (flying == 1)
         {
             m_Rigidbody.AddForce(transform.up * flyForce, ForceMode.VelocityChange);
             if (m_Rigidbody.velocity.magnitude > 6f)
@@ -119,33 +122,45 @@ public class SparrowAgent : Agent
 
     public override void CollectObservations(VectorSensor sensor)
     {
+        // is agent hungry
         sensor.AddObservation(m_IsFullStomach);
+        //1
+        // distance to baby (scalar)
         var babyPosition = m_Baby.transform.position;
         var agentPosition = transform.position;
         sensor.AddObservation(Vector3.Distance(babyPosition, agentPosition));
-        sensor.AddObservation((babyPosition - agentPosition).normalized);
+        //3
+        // baby position
+        sensor.AddObservation(babyPosition);
+        //3
+        // direction to baby 
+        sensor.AddObservation(babyPosition - agentPosition);
+        //3
+        // vector3 of space in front of agent
         sensor.AddObservation(transform.forward);
-
-        GameObject[] spiders = GameObject.FindGameObjectsWithTag("spider");
+        //3
+        // distance to closest spider
+        var spiders = GameObject.FindGameObjectsWithTag("spider");
         if (spiders.Length > 0)
         {
             float nearestSpiderDistance = Mathf.Infinity;
             foreach (var spider in spiders)
             {
-                float distanceToSpider = Vector3.Distance(transform.position, spider.transform.position);
+                float distanceToSpider = Vector3.Distance(agentPosition, spider.transform.position);
                 if (distanceToSpider < nearestSpiderDistance)
                 {
                     nearestSpiderDistance = distanceToSpider;
                 }
             }
+
             sensor.AddObservation(nearestSpiderDistance);
         }
         else
         {
             sensor.AddObservation(-1f);
         }
-        //9 observations
-
+        //1
+        //9+3+3 observations
     }
 
     private void OnCollisionEnter(Collision other)
@@ -155,6 +170,7 @@ public class SparrowAgent : Agent
             EatSpider(other.gameObject);
             Debug.Log("Spider eaten!");
         }
+
         if (other.transform.CompareTag("baby"))
         {
             RegurgitateSpider();
@@ -166,9 +182,7 @@ public class SparrowAgent : Agent
         if (m_IsFullStomach) return;
         m_IsFullStomach = true;
         m_SparrowArea.RemoveSpecificSpider(spiderObject);
-        /*
-        AddReward(1f);
-    */
+        AddReward(0.2f);
     }
 
     private void RegurgitateSpider()
