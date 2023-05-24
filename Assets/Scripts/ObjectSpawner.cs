@@ -14,10 +14,11 @@ public class ObjectSpawner : MonoBehaviour
             throw new Exception();
         }
 
+        Random.InitState(DateTime.Now.Millisecond);
         var bounds = coll.bounds;
         var sizeX = bounds.size.x / 2;
-        var sizeY = bounds.size.z / 2;
-        Vector3 pos = transform.position + new Vector3(Random.Range(-sizeX, sizeX), .4f, Random.Range(-sizeY, sizeY));
+        var sizeZ = bounds.size.z / 2;
+        Vector3 pos = transform.position + new Vector3(Random.Range(-sizeX, sizeX), .4f, Random.Range(-sizeZ, sizeZ));
         return pos;
     }
 }
