@@ -48,13 +48,13 @@ public class SparrowArea : MonoBehaviour
     {
         var rigidBody = sparrowAgent.GetComponent<Rigidbody>();
         rigidBody.velocity = rigidBody.angularVelocity = Vector3.zero;
-        sparrowAgent.transform.position = m_Spawner.GETRandomPosition();
         sparrowAgent.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
+        sparrowAgent.transform.position = m_Spawner.GETRandomPosition();
     }
 
     private void PlaceBabySparrow()
     {
-        Rigidbody rigidBody = sparrowBaby.GetComponent<Rigidbody>();
+        var rigidBody = sparrowBaby.GetComponent<Rigidbody>();
         rigidBody.velocity = Vector3.zero;
         rigidBody.angularVelocity = Vector3.zero;
         sparrowBaby.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
@@ -62,10 +62,10 @@ public class SparrowArea : MonoBehaviour
 
     private void SpawnSpiders(int count, float speed)
     {
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
-            GameObject spiderObject = Instantiate(spider.gameObject, transform, true);
-            Vector3 pos = m_Spawner.GETRandomPosition();
+            var spiderObject = Instantiate(spider.gameObject, transform, true);
+            var pos = m_Spawner.GETRandomPosition();
             spiderObject.transform.position = pos;
             spiderObject.transform.rotation = Quaternion.Euler(0f, Random.Range(0f, 360f), 0f);
             m_SpiderList.Add(spiderObject);

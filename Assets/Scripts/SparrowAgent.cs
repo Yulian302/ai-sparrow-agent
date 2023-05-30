@@ -180,7 +180,7 @@ public class SparrowAgent : Agent
 
         if (other.transform.CompareTag("baby"))
         {
-            RegurgitateSpider();
+            CollectSpider();
         }
     }
 
@@ -192,7 +192,7 @@ public class SparrowAgent : Agent
         AddReward(0.2f);
     }
 
-    private void RegurgitateSpider()
+    private void CollectSpider()
     {
         if (!m_IsFullStomach) return;
         m_IsFullStomach = false;
